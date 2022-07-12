@@ -1,11 +1,71 @@
 import React from 'react';
+import axios from 'axios';
 
 import './style.scss';
 
 export default function Header() {
+
+  const getRequest = async () => {
+    try {
+      axios({
+        method: 'GET',
+        url: 'https://api.nasa.gov/planetary/apod?api_key=fAO4IDBQgrW9YFcqYjfWASh8UwH4bbbPFDDUWoqx',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Key': 'fAO4IDBQgrW9YFcqYjfWASh8UwH4bbbPFDDUWoqx',
+        }
+      }
+      ).then(response => {
+        // console.log(response.data);
+        const { url } = response.data;
+        console.log(url, 'Je passe ici');
+        const elem = document.querySelector('.content');
+        let element = document.createElement('img');
+        element.classList.add('content__dailyImage');
+        element.src = url;
+        elem.appendChild(element);
+      }
+      )
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  
+  
+
+  const HomeButton = () => {
+    console.log('Je clic sur le bouton Home');
+  }
+
+  const DailyButton = () => {
+    console.log('Je clic sur le bouton Daily');
+    getRequest();
+  }
+
+  const NasaButton = () => {
+    console.log('Je clic sur le bouton Nasa');
+  }
+
+  // const DailyImage = () => {
+  // }
+
   return (
-    <div className='header'>Header
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus nihil vitae, vel facilis sequi sit dolor aut fugit atque ratione totam fuga ea qui, provident reiciendis esse beatae illum distinctio fugiat, tenetur aliquid deleniti accusantium ut. Quasi illum ad facere. Voluptatum, asperiores corporis corrupti sit cum, numquam, veniam atque ipsum similique obcaecati eius libero perferendis. Aspernatur cum hic veniam provident odio quae est harum perferendis qui vero sapiente voluptas natus, vitae quaerat optio veritatis! Voluptatum eveniet perferendis dolores voluptatibus sunt iure voluptate fugit sint fugiat asperiores maiores exercitationem ea dicta sed aut, omnis recusandae, quia iusto! Quia, rem. Dolorum, earum! Iure, officiis? Nisi blanditiis, praesentium mollitia pariatur et architecto est ex eligendi consectetur soluta debitis recusandae esse distinctio accusamus? Eos corporis odio quidem! Aliquid est unde repudiandae eveniet odio labore nemo laudantium consequatur non doloribus, itaque, ullam ipsum quisquam nihil soluta nobis harum quidem laboriosam earum reiciendis a exercitationem laborum dolor. Aspernatur nisi hic reiciendis tempora, possimus dicta amet itaque consectetur ipsum, quasi, cupiditate illum molestias aliquam quae et! Assumenda fuga necessitatibus voluptas. Blanditiis necessitatibus sunt tenetur perspiciatis laborum porro laboriosam fuga, rerum dignissimos earum voluptate tempore debitis libero eveniet accusamus voluptatum dolores animi laudantium corrupti reiciendis, totam esse. Praesentium, cupiditate earum corrupti, unde laborum perferendis molestiae vero repudiandae, iste cum animi ipsam recusandae minima enim et repellendus ad neque id illo. Eos eligendi saepe nobis culpa dolor, magnam beatae tempora dicta aliquid sed voluptatem porro facere sequi nam atque maiores optio sunt eius iure officiis provident. Temporibus ipsa hic nam fugit illum. Vel consectetur sequi suscipit atque esse voluptatum natus veritatis earum, cupiditate ab, pariatur velit molestiae cumque saepe in? Sed ea, velit nemo enim facilis esse excepturi aliquid modi magni repudiandae, soluta et quasi. Error, quod deserunt similique quisquam eos ut. Rem aperiam sit illo dolorum quibusdam veritatis?
+    <div className='header'>
+      <div className='header__home'>
+        <h1>Bienvenu sur cette page présentant différentes images de la Nasa et autres.</h1>
+        <h2>Vous pourrez y trouver l'image du jour de la Nasa, différentes images de la Nasa et bien d'autres.</h2>
+        <div className='header__home__nav'>
+          <button className='header__home__nav__button--home' onClick={HomeButton}><span>Accueil</span></button>
+          <button className='header__home__nav__button--daily' onClick={DailyButton}><span>Image du jour</span></button>
+          <button className='header__home__nav__button--nasa' onClick={NasaButton}>
+            <a href="https://www.nasa.gov/" target="_blank">
+              <span>Nasa</span>
+            </a>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
