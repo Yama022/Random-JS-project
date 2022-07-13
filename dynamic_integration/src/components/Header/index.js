@@ -1,5 +1,10 @@
 import React from 'react';
+import {
+  Link
+} from "react-router-dom";
 import axios from 'axios';
+
+import Daily from '/src/components/Content/daily';
 
 import './style.scss';
 
@@ -17,7 +22,6 @@ export default function Header() {
         }
       }
       ).then(response => {
-        // console.log(response.data);
         const { url } = response.data;
         console.log(url, 'Je passe ici');
         const elem = document.querySelector('.content');
@@ -25,6 +29,7 @@ export default function Header() {
         element.classList.add('content__dailyImage');
         element.src = url;
         elem.appendChild(element);
+
       }
       )
     } catch (error) {
@@ -42,6 +47,7 @@ export default function Header() {
   const DailyButton = () => {
     console.log('Je clic sur le bouton Daily');
     getRequest();
+    <Link to='dailyImage'><Daily /></Link>
   }
 
   const NasaButton = () => {

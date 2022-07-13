@@ -4,4 +4,19 @@
   color: green;
   border: 1px solid green;
   text-align: center;
+  &__dailyImage {
+    visibility: hidden;
+  }
+}
+
+.content__dailyImage {
+  visibility: visible;
+  & h3 {
+    opacity: 1;
+    color: #F93D21;
+  }
+  & img {
+    width: 100%;
+    height: auto;
+  }
 }
