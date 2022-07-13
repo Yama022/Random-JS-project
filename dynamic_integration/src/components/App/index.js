@@ -1,7 +1,7 @@
 // == Import
 import React from 'react';
 import {
-  Redirect, Route, Switch
+  BrowerRouter as Router, Link, Redirect, Route, Switch
 } from 'react-router-dom';
 
 import Header from 'src/components/Header';
@@ -10,13 +10,23 @@ import Footer from 'src/components/Footer';
 import './styles.scss';
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <Header />
-    <Content />
-    <Footer />
-  </div>
-);
+export default function App() {
+  return (
+      <div className="app">
+        <Link to="/home">
+          <Header />
+          <Content />
+          <Footer />
+        </Link>
+
+
+
+        {/* <Header />
+        <Content />
+        <Footer /> */}
+      </div>
+
+  )
+};
 
 // == Export
-export default App;
