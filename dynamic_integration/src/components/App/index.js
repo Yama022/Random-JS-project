@@ -16,6 +16,7 @@ export default function App() {
   return (
       <div className="app">
         <Switch>
+          
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
@@ -39,12 +40,6 @@ export default function App() {
           </Route>
 
         </Switch>
-
-
-
-        {/* <Header />
-        <Content />
-        <Footer /> */}
       </div>
 
   )
