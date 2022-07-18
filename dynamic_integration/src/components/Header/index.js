@@ -1,18 +1,10 @@
 import React from 'react';
 
-import { useHistory } from "react-router-dom";
-
-import Daily from '/src/components/Content/daily';
+import voieLactée from 'src/assets/images/Milky_Way.jpeg';
 
 import './style.scss';
 
 export default function Header() {
-
-  // const HomeButton = () => {
-  //   let path = `/home`;
-  //   let history = useHistory();
-  //   history.push(path);
-  // }
 
   const DailyButton = () => {
     console.log('Je clic sur le bouton Daily');
@@ -25,9 +17,9 @@ export default function Header() {
 
   return (
     <div className='header'>
+      <img src={voieLactée} alt="" />
       <div className='header__home'>
-        <h1>Bienvenu sur cette page présentant différentes images de la Nasa et autres.</h1>
-        <h2>Vous pourrez y trouver l'image du jour de la Nasa, différentes images de la Nasa et bien d'autres.</h2>
+        <h1>Présentation d'images sur le thème de l'astro photographie ainsi que l'image du jour de la NASA.</h1>
         <div className='header__home__nav'>
           <button className='header__home__nav__button--home' onClick={event => window.location.href='/home'}><span>Accueil</span></button>
           <button className='header__home__nav__button--daily' onClick={event => window.location.href='/dailyImage'}><span>Image du jour</span></button>
