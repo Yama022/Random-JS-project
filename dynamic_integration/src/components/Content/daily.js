@@ -1,9 +1,22 @@
 import React from 'react';
 import axios from 'axios';
+import { BsHandThumbsUpFill } from 'react-icons/bs';
 
 import './style.scss';
 
 export default function Daily() {
+
+  let counterVal = 0;
+
+  const upValue = () => {
+    console.log("Je passe ici");
+    updateCounter(++counterVal);
+  }
+
+  const updateCounter = (val) => {
+    document.querySelector('.counter').innerHTML = val;
+  }
+
   const getRequest = async () => {
     try {
       axios({
@@ -20,7 +33,7 @@ export default function Daily() {
         console.log(url, 'Je passe ici');
         const elem = document.querySelector('.daily');
         let element = document.createElement('img');
-        element.classList.add('daily__dailyImage');
+        element.classList.add('daily__image');
         element.src = url;
         elem.appendChild(element);
 
@@ -33,6 +46,12 @@ export default function Daily() {
 
   getRequest();
   return (
-    <div className='daily'>Daily</div>
+    <div className='daily'>
+      <div className='daily__text'>
+        <h3>Tu aimes cette image ? Si oui, mets un pouce <span><BsHandThumbsUpFill/></span> </h3>
+        <button onClick={upValue}><BsHandThumbsUpFill /></button>
+        <h4>Nombres de Like pour cette image : <span className='counter'>0</span></h4>
+      </div>
+    </div>
   );
 }

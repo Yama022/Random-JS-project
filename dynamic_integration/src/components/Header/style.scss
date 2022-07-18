@@ -1,5 +1,4 @@
 .header {
-  border: 1px solid red;
   width: 100%;
   margin: .5rem auto 0 auto;
   text-align: center;
@@ -13,7 +12,6 @@
     flex-direction: column;
     &__nav {
       padding: .5rem .3rem;
-      border: 1px solid blue;
       margin-top: .5rem;
       width: 100%;
       display: flex;
