@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-import './style.scss';
 
 export default function Register() {
   const [name, setName] = useState('');
