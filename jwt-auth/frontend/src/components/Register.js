@@ -1,33 +1,34 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
+const Register = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confPassword, setConfPassword] = useState('');
+    const [msg, setMsg] = useState('');
+    const history = useHistory();
 
-export default function Register() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [msg, setMsg] = useState('');
-  const history = useHistory();
-
-  const Register = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('http://localhost:8080/users', {
-        name,
-        email,
-        password,
-        confirmPassword,
-      });
-    } catch (error) {
-      if (error.response) {
-        setMsg(error.response.data.msg);
-      }
+    const Register = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post('http://localhost:5000/users', {
+                name: name,
+                email: email,
+                password: password,
+                confPassword: confPassword
+            });
+            history.push("/");
+        } catch (error) {
+            if (error.response) {
+                setMsg(error.response.data.msg);
+            }
+        }
     }
-  }
-  return (
-    <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+
+    return (
+        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">
@@ -68,5 +69,7 @@ export default function Register() {
                 </div>
             </div>
         </section>
-  );
+    )
 }
+
+export default Register

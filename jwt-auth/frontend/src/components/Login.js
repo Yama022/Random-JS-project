@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
@@ -22,9 +22,7 @@ const Login = () => {
       }
     }
   }
-}
 
-export default function Login() {
   return (
     <section className="hero has-background-grey-light is-fullheight is-fullwidth">
             <div className="hero-body">
@@ -54,5 +52,4 @@ export default function Login() {
                 </div>
             </div>
         </section>
-  );
-}
+)};
